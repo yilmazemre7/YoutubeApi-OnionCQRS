@@ -6,7 +6,8 @@ namespace YoutubeApi.Domain.Entities
     {
         public Category()
         {
-
+            Details = new HashSet<Detail>();
+            Products = new HashSet<Product>();
         }
         public Category(int parentId, string name, int priority)
         {
