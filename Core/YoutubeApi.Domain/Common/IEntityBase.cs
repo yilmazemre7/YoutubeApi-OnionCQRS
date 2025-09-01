@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YoutubeApi.Persistance
+namespace YoutubeApi.Domain.Common
 {
-    internal class testpr
+    public interface IEntityBase
     {
     }
 }
