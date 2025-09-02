@@ -1,7 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using YoutubeApi.Application.Interface.Repositories;
+using YoutubeApi.Application.Interface.UnitOfWorks;
 using YoutubeApi.Persistence.Context;
+using YoutubeApi.Persistence.Repositories;
+using YoutubeApi.Persistence.UnitOfWorks;
 
 namespace YoutubeApi.Persistence
 {
@@ -13,6 +17,11 @@ namespace YoutubeApi.Persistence
             {
                 opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
+            services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
+            services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
+
         }
     }
 }
