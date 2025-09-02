@@ -10,8 +10,6 @@ namespace YoutubeApi.Application.Interface.Repositories
 
         IQueryable<T> Find(Expression<Func<T, bool>> predicate, bool enableTracking = false);
 
-        IQueryable<T> Find(Expression<Func<T, bool>> predicate);
-
         Task<IList<T>> GetAllAsync(
             Expression<Func<T, bool>>? predicate = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,

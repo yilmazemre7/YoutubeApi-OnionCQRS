@@ -78,14 +78,6 @@ namespace YoutubeApi.Persistence.Repositories
                 .Take(pageSize);
             return await queryable.ToListAsync();
         }
-        public IQueryable<T> Find(Expression<Func<T, bool>> predicate)
-        {
-            var queryable = Table;
-            return Table.Where(predicate).AsQueryable();
-        }
-
-
-
         public async Task<T> GetAsync(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, bool enableTracking = false)
         {
             IQueryable<T> queryable = Table;
