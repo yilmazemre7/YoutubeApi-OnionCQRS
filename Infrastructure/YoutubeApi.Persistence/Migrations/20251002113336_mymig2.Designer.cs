@@ -12,8 +12,8 @@ using YoutubeApi.Persistence.Context;
 namespace YoutubeApi.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250901120056_add-migration InitialCreate")]
-    partial class addmigrationInitialCreate
+    [Migration("20251002113336_mymig2")]
+    partial class mymig2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,21 +24,6 @@ namespace YoutubeApi.Persistence.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("CategoryProduct", b =>
-                {
-                    b.Property<int>("CategoriesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CategoriesId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("CategoryProduct");
-                });
 
             modelBuilder.Entity("YoutubeApi.Domain.Entities.Brand", b =>
                 {
@@ -66,21 +51,21 @@ namespace YoutubeApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 9, 1, 15, 0, 56, 94, DateTimeKind.Local).AddTicks(1151),
+                            CreatedDate = new DateTime(2025, 10, 2, 14, 33, 35, 850, DateTimeKind.Local).AddTicks(3483),
                             IsDeleted = false,
                             Name = "Apple"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2025, 9, 1, 15, 0, 56, 95, DateTimeKind.Local).AddTicks(3589),
+                            CreatedDate = new DateTime(2025, 10, 2, 14, 33, 35, 852, DateTimeKind.Local).AddTicks(2127),
                             IsDeleted = false,
                             Name = "Samsung"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2025, 9, 1, 15, 0, 56, 95, DateTimeKind.Local).AddTicks(3596),
+                            CreatedDate = new DateTime(2025, 10, 2, 14, 33, 35, 852, DateTimeKind.Local).AddTicks(2142),
                             IsDeleted = true,
                             Name = "Huawei"
                         });
@@ -118,7 +103,7 @@ namespace YoutubeApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 9, 1, 15, 0, 56, 95, DateTimeKind.Local).AddTicks(8461),
+                            CreatedDate = new DateTime(2025, 10, 2, 14, 33, 35, 853, DateTimeKind.Local).AddTicks(1662),
                             IsDeleted = false,
                             Name = "Elektronik",
                             ParentId = 0,
@@ -127,7 +112,7 @@ namespace YoutubeApi.Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2025, 9, 1, 15, 0, 56, 95, DateTimeKind.Local).AddTicks(9085),
+                            CreatedDate = new DateTime(2025, 10, 2, 14, 33, 35, 853, DateTimeKind.Local).AddTicks(2168),
                             IsDeleted = false,
                             Name = "Moda",
                             ParentId = 0,
@@ -136,7 +121,7 @@ namespace YoutubeApi.Persistence.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2025, 9, 1, 15, 0, 56, 95, DateTimeKind.Local).AddTicks(9087),
+                            CreatedDate = new DateTime(2025, 10, 2, 14, 33, 35, 853, DateTimeKind.Local).AddTicks(2171),
                             IsDeleted = false,
                             Name = "Bilgisayar",
                             ParentId = 1,
@@ -145,7 +130,7 @@ namespace YoutubeApi.Persistence.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2025, 9, 1, 15, 0, 56, 95, DateTimeKind.Local).AddTicks(9088),
+                            CreatedDate = new DateTime(2025, 10, 2, 14, 33, 35, 853, DateTimeKind.Local).AddTicks(2172),
                             IsDeleted = false,
                             Name = "Kadın",
                             ParentId = 2,
@@ -189,7 +174,7 @@ namespace YoutubeApi.Persistence.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2025, 9, 1, 15, 0, 56, 96, DateTimeKind.Local).AddTicks(354),
+                            CreatedDate = new DateTime(2025, 10, 2, 14, 33, 35, 853, DateTimeKind.Local).AddTicks(4989),
                             Description = "En son teknoloji akıllı telefon özellikleri ve detayları",
                             IsDeleted = false,
                             Title = "Akıllı Telefon Özellikleri"
@@ -198,7 +183,7 @@ namespace YoutubeApi.Persistence.Migrations
                         {
                             Id = 2,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2025, 9, 1, 15, 0, 56, 96, DateTimeKind.Local).AddTicks(610),
+                            CreatedDate = new DateTime(2025, 10, 2, 14, 33, 35, 853, DateTimeKind.Local).AddTicks(5291),
                             Description = "2024 yılının en popüler moda trendleri ve stil önerileri",
                             IsDeleted = true,
                             Title = "Moda Trendleri"
@@ -207,7 +192,7 @@ namespace YoutubeApi.Persistence.Migrations
                         {
                             Id = 3,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2025, 9, 1, 15, 0, 56, 96, DateTimeKind.Local).AddTicks(611),
+                            CreatedDate = new DateTime(2025, 10, 2, 14, 33, 35, 853, DateTimeKind.Local).AddTicks(5293),
                             Description = "Tablet bilgisayarların teknik özellikleri ve kullanım alanları",
                             IsDeleted = false,
                             Title = "Tablet Özellikleri"
@@ -256,7 +241,7 @@ namespace YoutubeApi.Persistence.Migrations
                         {
                             Id = 1,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2025, 9, 1, 15, 0, 56, 98, DateTimeKind.Local).AddTicks(4577),
+                            CreatedDate = new DateTime(2025, 10, 2, 14, 33, 35, 859, DateTimeKind.Local).AddTicks(9694),
                             Description = "Apple IPhone 14 Pro Max 256GB",
                             Discount = 0.10m,
                             IsDeleted = false,
@@ -267,7 +252,7 @@ namespace YoutubeApi.Persistence.Migrations
                         {
                             Id = 2,
                             BrandId = 2,
-                            CreatedDate = new DateTime(2025, 9, 1, 15, 0, 56, 98, DateTimeKind.Local).AddTicks(5313),
+                            CreatedDate = new DateTime(2025, 10, 2, 14, 33, 35, 860, DateTimeKind.Local).AddTicks(269),
                             Description = "Samsung Galaxy S23 Ultra 512GB",
                             Discount = 0.15m,
                             IsDeleted = false,
@@ -278,7 +263,7 @@ namespace YoutubeApi.Persistence.Migrations
                         {
                             Id = 3,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2025, 9, 1, 15, 0, 56, 98, DateTimeKind.Local).AddTicks(5315),
+                            CreatedDate = new DateTime(2025, 10, 2, 14, 33, 35, 860, DateTimeKind.Local).AddTicks(271),
                             Description = "Apple MacBook Pro M2 1TB",
                             Discount = 0.05m,
                             IsDeleted = false,
@@ -287,19 +272,28 @@ namespace YoutubeApi.Persistence.Migrations
                         });
                 });
 
-            modelBuilder.Entity("CategoryProduct", b =>
+            modelBuilder.Entity("YoutubeApi.Domain.Entities.ProductCategory", b =>
                 {
-                    b.HasOne("YoutubeApi.Domain.Entities.Category", null)
-                        .WithMany()
-                        .HasForeignKey("CategoriesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
 
-                    b.HasOne("YoutubeApi.Domain.Entities.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ProductId", "CategoryId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("YoutubeApi.Domain.Entities.Detail", b =>
@@ -324,9 +318,35 @@ namespace YoutubeApi.Persistence.Migrations
                     b.Navigation("Brand");
                 });
 
+            modelBuilder.Entity("YoutubeApi.Domain.Entities.ProductCategory", b =>
+                {
+                    b.HasOne("YoutubeApi.Domain.Entities.Category", "Category")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("YoutubeApi.Domain.Entities.Product", "Product")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("YoutubeApi.Domain.Entities.Category", b =>
                 {
                     b.Navigation("Details");
+
+                    b.Navigation("ProductCategories");
+                });
+
+            modelBuilder.Entity("YoutubeApi.Domain.Entities.Product", b =>
+                {
+                    b.Navigation("ProductCategories");
                 });
 #pragma warning restore 612, 618
         }

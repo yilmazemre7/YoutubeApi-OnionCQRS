@@ -1,23 +1,23 @@
 ﻿using YoutubeApi.Application.Interface.Repositories;
-using YoutubeApi.Application.Interface.UnitOfWorks;
+using YoutubeApi.Application.Interfaces.UnitOfWorks;
 using YoutubeApi.Persistence.Context;
 using YoutubeApi.Persistence.Repositories;
 
 namespace YoutubeApi.Persistence.UnitOfWorks
 {
-    public class UnitOfWork<T> : IUnitOfWork<T>
+    public class UnitOfWork : IUnitOfWork
     {
-        private readonly AppDbContext _context;
-        public UnitOfWork(AppDbContext context)
+        private readonly AppDbContext dbContext;
+
+        public UnitOfWork(AppDbContext dbContext)
         {
-            _context = context;
+            this.dbContext = dbContext;
         }
+        public async ValueTask DisposeAsync() => await dbContext.DisposeAsync();
 
-        public async ValueTask DisposeAsync() => await _context.DisposeAsync();
-
-        public int Save() => _context.SaveChanges();
-        public async Task<int> SaveAsync() => await _context.SaveChangesAsync();
-        IReadRepository<T> IUnitOfWork<T>.GetReadRepository<T>() => new ReadRepository<T>(_context);
-        IWriteRepository<T> IUnitOfWork<T>.GetWriteRepository<T>() => new WriteRepository<T>(_context);
+        public int Save() => dbContext.SaveChanges();
+        public async Task<int> SaveAsync() => await dbContext.SaveChangesAsync();
+        IReadRepository<T> IUnitOfWork.GetReadRepository<T>() => new ReadRepository<T>(dbContext);
+        IWriteRepository<T> IUnitOfWork.GetWriteRepository<T>() => new WriteRepository<T>(dbContext);
     }
 }

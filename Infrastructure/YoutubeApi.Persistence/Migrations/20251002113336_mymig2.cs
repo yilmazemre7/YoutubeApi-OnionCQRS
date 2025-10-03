@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace YoutubeApi.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class addmigrationInitialCreate : Migration
+    public partial class mymig2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -94,24 +94,27 @@ namespace YoutubeApi.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CategoryProduct",
+                name: "ProductCategories",
                 columns: table => new
                 {
-                    CategoriesId = table.Column<int>(type: "int", nullable: false),
-                    ProductsId = table.Column<int>(type: "int", nullable: false)
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoryProduct", x => new { x.CategoriesId, x.ProductsId });
+                    table.PrimaryKey("PK_ProductCategories", x => new { x.ProductId, x.CategoryId });
                     table.ForeignKey(
-                        name: "FK_CategoryProduct_Categories_CategoriesId",
-                        column: x => x.CategoriesId,
+                        name: "FK_ProductCategories_Categories_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CategoryProduct_Products_ProductsId",
-                        column: x => x.ProductsId,
+                        name: "FK_ProductCategories_Products_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -122,9 +125,9 @@ namespace YoutubeApi.Persistence.Migrations
                 columns: new[] { "Id", "CreatedDate", "IsDeleted", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 9, 1, 15, 0, 56, 94, DateTimeKind.Local).AddTicks(1151), false, "Apple" },
-                    { 2, new DateTime(2025, 9, 1, 15, 0, 56, 95, DateTimeKind.Local).AddTicks(3589), false, "Samsung" },
-                    { 3, new DateTime(2025, 9, 1, 15, 0, 56, 95, DateTimeKind.Local).AddTicks(3596), true, "Huawei" }
+                    { 1, new DateTime(2025, 10, 2, 14, 33, 35, 850, DateTimeKind.Local).AddTicks(3483), false, "Apple" },
+                    { 2, new DateTime(2025, 10, 2, 14, 33, 35, 852, DateTimeKind.Local).AddTicks(2127), false, "Samsung" },
+                    { 3, new DateTime(2025, 10, 2, 14, 33, 35, 852, DateTimeKind.Local).AddTicks(2142), true, "Huawei" }
                 });
 
             migrationBuilder.InsertData(
@@ -132,10 +135,10 @@ namespace YoutubeApi.Persistence.Migrations
                 columns: new[] { "Id", "CreatedDate", "IsDeleted", "Name", "ParentId", "Priority" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 9, 1, 15, 0, 56, 95, DateTimeKind.Local).AddTicks(8461), false, "Elektronik", 0, 1 },
-                    { 2, new DateTime(2025, 9, 1, 15, 0, 56, 95, DateTimeKind.Local).AddTicks(9085), false, "Moda", 0, 2 },
-                    { 3, new DateTime(2025, 9, 1, 15, 0, 56, 95, DateTimeKind.Local).AddTicks(9087), false, "Bilgisayar", 1, 1 },
-                    { 4, new DateTime(2025, 9, 1, 15, 0, 56, 95, DateTimeKind.Local).AddTicks(9088), false, "Kadın", 2, 1 }
+                    { 1, new DateTime(2025, 10, 2, 14, 33, 35, 853, DateTimeKind.Local).AddTicks(1662), false, "Elektronik", 0, 1 },
+                    { 2, new DateTime(2025, 10, 2, 14, 33, 35, 853, DateTimeKind.Local).AddTicks(2168), false, "Moda", 0, 2 },
+                    { 3, new DateTime(2025, 10, 2, 14, 33, 35, 853, DateTimeKind.Local).AddTicks(2171), false, "Bilgisayar", 1, 1 },
+                    { 4, new DateTime(2025, 10, 2, 14, 33, 35, 853, DateTimeKind.Local).AddTicks(2172), false, "Kadın", 2, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -143,9 +146,9 @@ namespace YoutubeApi.Persistence.Migrations
                 columns: new[] { "Id", "CategoryId", "CreatedDate", "Description", "IsDeleted", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2025, 9, 1, 15, 0, 56, 96, DateTimeKind.Local).AddTicks(354), "En son teknoloji akıllı telefon özellikleri ve detayları", false, "Akıllı Telefon Özellikleri" },
-                    { 2, 2, new DateTime(2025, 9, 1, 15, 0, 56, 96, DateTimeKind.Local).AddTicks(610), "2024 yılının en popüler moda trendleri ve stil önerileri", true, "Moda Trendleri" },
-                    { 3, 1, new DateTime(2025, 9, 1, 15, 0, 56, 96, DateTimeKind.Local).AddTicks(611), "Tablet bilgisayarların teknik özellikleri ve kullanım alanları", false, "Tablet Özellikleri" }
+                    { 1, 1, new DateTime(2025, 10, 2, 14, 33, 35, 853, DateTimeKind.Local).AddTicks(4989), "En son teknoloji akıllı telefon özellikleri ve detayları", false, "Akıllı Telefon Özellikleri" },
+                    { 2, 2, new DateTime(2025, 10, 2, 14, 33, 35, 853, DateTimeKind.Local).AddTicks(5291), "2024 yılının en popüler moda trendleri ve stil önerileri", true, "Moda Trendleri" },
+                    { 3, 1, new DateTime(2025, 10, 2, 14, 33, 35, 853, DateTimeKind.Local).AddTicks(5293), "Tablet bilgisayarların teknik özellikleri ve kullanım alanları", false, "Tablet Özellikleri" }
                 });
 
             migrationBuilder.InsertData(
@@ -153,19 +156,19 @@ namespace YoutubeApi.Persistence.Migrations
                 columns: new[] { "Id", "BrandId", "CreatedDate", "Description", "Discount", "IsDeleted", "Price", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2025, 9, 1, 15, 0, 56, 98, DateTimeKind.Local).AddTicks(4577), "Apple IPhone 14 Pro Max 256GB", 0.10m, false, 1999.99m, "IPhone 14 Pro" },
-                    { 2, 2, new DateTime(2025, 9, 1, 15, 0, 56, 98, DateTimeKind.Local).AddTicks(5313), "Samsung Galaxy S23 Ultra 512GB", 0.15m, false, 1899.99m, "Samsung Galaxy S23" },
-                    { 3, 1, new DateTime(2025, 9, 1, 15, 0, 56, 98, DateTimeKind.Local).AddTicks(5315), "Apple MacBook Pro M2 1TB", 0.05m, false, 2999.99m, "MacBook Pro" }
+                    { 1, 1, new DateTime(2025, 10, 2, 14, 33, 35, 859, DateTimeKind.Local).AddTicks(9694), "Apple IPhone 14 Pro Max 256GB", 0.10m, false, 1999.99m, "IPhone 14 Pro" },
+                    { 2, 2, new DateTime(2025, 10, 2, 14, 33, 35, 860, DateTimeKind.Local).AddTicks(269), "Samsung Galaxy S23 Ultra 512GB", 0.15m, false, 1899.99m, "Samsung Galaxy S23" },
+                    { 3, 1, new DateTime(2025, 10, 2, 14, 33, 35, 860, DateTimeKind.Local).AddTicks(271), "Apple MacBook Pro M2 1TB", 0.05m, false, 2999.99m, "MacBook Pro" }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CategoryProduct_ProductsId",
-                table: "CategoryProduct",
-                column: "ProductsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Details_CategoryId",
                 table: "Details",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductCategories_CategoryId",
+                table: "ProductCategories",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
@@ -178,16 +181,16 @@ namespace YoutubeApi.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CategoryProduct");
-
-            migrationBuilder.DropTable(
                 name: "Details");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "ProductCategories");
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Brands");
